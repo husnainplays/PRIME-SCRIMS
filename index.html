@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRIME SCRIMS | PUBG Esports</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080b12;
+    color:#fff;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(8,11,18,.96);
+    border-bottom:1px solid #202735;
+    backdrop-filter:blur(10px);
+}
+
+.nav{
+    max-width:1150px;
+    margin:auto;
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ffb800;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:#b9c0cc;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ffb800;
+}
+
+.hero{
+    max-width:1150px;
+    margin:auto;
+    padding:75px 20px 45px;
+}
+
+.hero-box{
+    background:
+    radial-gradient(circle at 85% 20%,rgba(255,184,0,.18),transparent 30%),
+    linear-gradient(135deg,#121722,#090c13);
+    border:1px solid #252d3b;
+    border-radius:24px;
+    padding:55px 35px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    background:#ffb800;
+    color:#080b12;
+    padding:7px 15px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,78px);
+    font-weight:1000;
+    letter-spacing:2px;
+}
+
+.hero h1 span{
+    color:#ffb800;
+}
+
+.hero p{
+    color:#9da6b5;
+    margin:15px auto 25px;
+    max-width:650px;
+    line-height:1.6;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:900;
+    margin:5px;
+}
+
+.btn-primary{
+    background:#ffb800;
+    color:#090b10;
+}
+
+.btn-dark{
+    border:1px solid #343c4c;
+    color:#fff;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:20px;
+}
+
+.section-title{
+    font-size:28px;
+    margin:35px 0 18px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.card{
+    background:#10141d;
+    border:1px solid #252d3a;
+    border-radius:16px;
+    padding:20px;
+}
+
+.card small{
+    color:#7f8999;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.card h3{
+    margin-top:9px;
+    font-size:21px;
+}
+
+.card p{
+    color:#aeb6c3;
+    margin-top:7px;
+    font-size:14px;
+}
+
+.scrim{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:15px;
+    background:#10141d;
+    border:1px solid #252d3a;
+    border-radius:18px;
+    padding:22px;
+}
+
+.scrim-main h2{
+    font-size:25px;
+}
+
+.scrim-main p{
+    color:#8f99a9;
+    margin-top:8px;
+}
+
+.info strong{
+    display:block;
+    color:#ffb800;
+    font-size:20px;
+    margin-top:4px;
+}
+
+.table-wrap{
+    overflow-x:auto;
+    background:#10141d;
+    border:1px solid #252d3a;
+    border-radius:16px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+th,td{
+    padding:14px 16px;
+    text-align:left;
+    border-bottom:1px solid #252d3a;
+}
+
+th{
+    color:#ffb800;
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+td{
+    color:#dce1e8;
+}
+
+.rank{
+    font-weight:900;
+}
+
+.top{
+    color:#ffb800;
+}
+
+.slots{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.slot{
+    background:#10141d;
+    border:1px solid #252d3a;
+    border-radius:12px;
+    padding:15px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.slot-number{
+    color:#ffb800;
+    font-weight:900;
+    min-width:25px;
+}
+
+.slot-name{
+    font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.winners{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.winner{
+    text-align:center;
+    background:#10141d;
+    border:1px solid #252d3a;
+    border-radius:18px;
+    padding:25px 15px;
+}
+
+.trophy{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.winner h3{
+    font-size:18px;
+}
+
+.prize{
+    color:#ffb800;
+    font-weight:900;
+    margin-top:7px;
+}
+
+.rules{
+    background:#10141d;
+    border:1px solid #252d3a;
+    border-radius:16px;
+    padding:22px;
+}
+
+.rules li{
+    margin:10px 0 10px 20px;
+    color:#b7bfcc;
+    line-height:1.5;
+}
+
+footer{
+    margin-top:50px;
+    border-top:1px solid #202735;
+    padding:30px 20px;
+    text-align:center;
+    color:#707a89;
+    font-size:13px;
+}
+
+@media(max-width:800px){
+    nav{
+        display:none;
+    }
+
+    .cards,
+    .winners{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .slots{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .scrim{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:500px){
+    .hero{
+        padding-top:35px;
+    }
+
+    .hero-box{
+        padding:40px 18px;
+    }
+
+    .cards,
+    .winners,
+    .scrim{
+        grid-template-columns:1fr;
+    }
+
+    .slots{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .section-title{
+        font-size:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+    <div class="logo">PRIME <span>SCRIMS</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#scrim">Scrims</a>
+        <a href="#slots">Slots</a>
+        <a href="#points">Points</a>
+        <a href="#winners">Winners</a>
+        <a href="#rules">Rules</a>
+    </nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-box">
+
+    <div class="badge">DAILY PUBG ESPORTS</div>
+
+    <h1>PRIME <span>SCRIMS</span></h1>
+
+    <p>
+        Daily competitive PUBG Mobile scrims with live commentary,
+        organized slots, points table and official results.
+    </p>
+
+    <a class="btn btn-primary" href="#scrim">VIEW TODAY'S SCRIM</a>
+    <a class="btn btn-dark" href="#slots">VIEW SLOTS</a>
+
+</div>
+</section>
+
+<main class="container">
+
+<h2 class="section-title">Today's Highlights</h2>
+
+<div class="cards">
+
+<div class="card">
+<small>ENTRY FEE</small>
+<h3>50 PKR</h3>
+<p>Daily registration</p>
+</div>
+
+<div class="card">
+<small>PRIZE POOL</small>
+<h3>600 PKR+</h3>
+<p>Top teams rewarded</p>
+</div>
+
+<div class="card">
+<small>MATCH TIME</small>
+<h3>10:20 PM</h3>
+<p>Daily scrims</p>
+</div>
+
+<div class="card">
+<small>LIVE</small>
+<h3>LEADER LIVE</h3>
+<p>Live commentary</p>
+</div>
+
+</div>
+
+
+<h2 class="section-title" id="scrim">Today's Scrim</h2>
+
+<div class="scrim">
+
+<div class="scrim-main">
+    <h2>PRIME DAILY SCRIM</h2>
+    <p>Competitive PUBG Mobile custom room</p>
+</div>
+
+<div class="info">
+    <small>DATE</small>
+    <strong>16 SEP 2026</strong>
+</div>
+
+<div class="info">
+    <small>TIME</small>
+    <strong>10:20 PM</strong>
+</div>
+
+<div class="info">
+    <small>ENTRY</small>
+    <strong>50 PKR</strong>
+</div>
+
+<div class="info">
+    <small>MAP</small>
+    <strong>ERANGEL</strong>
+</div>
+
+<div class="info">
+    <small>STATUS</small>
+    <strong>UPCOMING</strong>
+</div>
+
+</div>
+
+
+<h2 class="section-title" id="slots">Today's Slot List</h2>
+
+<div class="slots">
+
+<div class="slot"><span class="slot-number">01</span><span class="slot-name">FLX OFFICIAL</span></div>
+<div class="slot"><span class="slot-number">02</span><span class="slot-name">KHAN</span></div>
+<div class="slot"><span class="slot-number">03</span><span class="slot-name">PANDA</span></div>
+<div class="slot"><span class="slot-number">04</span><span class="slot-name">IGL</span></div>
+<div class="slot"><span class="slot-number">05</span><span class="slot-name">FIRE LEGENDS</span></div>
+<div class="slot"><span class="slot-number">06</span><span class="slot-name">RL OFFICIAL</span></div>
+<div class="slot"><span class="slot-number">07</span><span class="slot-name">7 DRAGONS</span></div>
+<div class="slot"><span class="slot-number">08</span><span class="slot-name">BRUTAL</span></div>
+<div class="slot"><span class="slot-number">09</span><span class="slot-name">PSYCHO CLAN</span></div>
+<div class="slot"><span class="slot-number">10</span><span class="slot-name">FALCON STRIKE</span></div>
+<div class="slot"><span class="slot-number">11</span><span class="slot-name">BJ</span></div>
+<div class="slot"><span class="slot-number">12</span><span class="slot-name">TEAM TOXIC</span></div>
+<div class="slot"><span class="slot-number">13</span><span class="slot-name">AVAILABLE</span></div>
+<div class="slot"><span class="slot-number">14</span><span class="slot-name">AVAILABLE</span></div>
+<div class="slot"><span class="slot-number">15</span><span class="slot-name">AVAILABLE</span></div>
+<div class="slot"><span class="slot-number">16</span><span class="slot-name">AVAILABLE</span></div>
+
+</div>
+
+
+<h2 class="section-title" id="points">Latest Points Table</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>#</th>
+<th>Team</th>
+<th>WWCD</th>
+<th>Kills</th>
+<th>Placement</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td class="rank top">1</td>
+<td>FLX OFFICIAL</td>
+<td>1</td>
+<td>12</td>
+<td>10</td>
+<td><b>22</b></td>
+</tr>
+
+<tr>
+<td class="rank">2</td>
+<td>KHAN</td>
+<td>0</td>
+<td>10</td>
+<td>6</td>
+<td><b>16</b></td>
+</tr>
+
+<tr>
+<td class="rank">3</td>
+<td>PANDA</td>
+<td>0</td>
+<td>8</td>
+<td>5</td>
+<td><b>13</b></td>
+</tr>
+
+<tr>
+<td class="rank">4</td>
+<td>IGL</td>
+<td>0</td>
+<td>7</td>
+<td>4</td>
+<td><b>11</b></td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+
+<h2 class="section-title" id="winners">Latest Winners</h2>
+
+<div class="winners">
+
+<div class="winner">
+<div class="trophy">🏆</div>
+<h3>FLX OFFICIAL</h3>
+<div class="prize">#1 — 300 PKR</div>
+</div>
+
+<div class="winner">
+<div class="trophy">🥈</div>
+<h3>KHAN</h3>
+<div class="prize">#2 — 200 PKR</div>
+</div>
+
+<div class="winner">
+<div class="trophy">🥉</div>
+<h3>PANDA</h3>
+<div class="prize">#3 — 100 PKR</div>
+</div>
+
+<div class="winner">
+<div class="trophy">🎮</div>
+<h3>IGL</h3>
+<div class="prize">#4 — RETAIN SLOT</div>
+</div>
+
+</div>
+
+
+<h2 class="section-title" id="rules">Scrim Rules</h2>
+
+<div class="rules">
+
+<ul>
+<li>No late joining after the room starts.</li>
+<li>Room ID and password must not be shared outside your own team.</li>
+<li>Kick reports must be sent through in-game text chat with slot and player details.</li>
+<li>Respect all teams and staff during the match.</li>
+<li>Official results will be published on this website.</li>
+</ul>
+
+</div>
+
+</main>
+
+
+<footer>
+    © 2026 PRIME SCRIMS — PUBG Mobile Esports
+</footer>
+
+</body>
+  </html>
